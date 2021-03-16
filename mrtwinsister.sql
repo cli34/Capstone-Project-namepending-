@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2021 at 04:50 PM
+-- Generation Time: Mar 16, 2021 at 05:44 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -40,11 +40,19 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `donorlist` (
   `Donorlist_ID` varchar(12) NOT NULL,
-  `Request_ID` varchar(8) NOT NULL,
-  `Donor_ID` varchar(8) NOT NULL,
+  `Request_ID` varchar(8) DEFAULT NULL,
+  `Donor_ID` varchar(8) DEFAULT NULL,
   `Donation` double NOT NULL,
   `Donation_Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `donorlist`
+--
+
+INSERT INTO `donorlist` (`Donorlist_ID`, `Request_ID`, `Donor_ID`, `Donation`, `Donation_Date`) VALUES
+('000000000001', '00000001', '00000001', 1000, '2021-03-16'),
+('000000000002', NULL, NULL, 0, '2021-03-17');
 
 -- --------------------------------------------------------
 
@@ -62,8 +70,15 @@ CREATE TABLE `request` (
   `funding_Goal` int(11) NOT NULL,
   `funding_Raised` int(11) NOT NULL,
   `inprogress_bool` int(11) NOT NULL,
-  `Donorlist` varchar(12) NOT NULL
+  `Donorlist` varchar(12) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`request_ID`, `date_Start`, `date_End`, `Author_ID`, `approval_bool`, `approval_AdminID`, `funding_Goal`, `funding_Raised`, `inprogress_bool`, `Donorlist`) VALUES
+('00000001', '2021-03-16', '2021-03-18', '00000002', 1, '00000003', 5000, 1000, 1, '000000000001');
 
 -- --------------------------------------------------------
 
@@ -94,7 +109,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `AccountType`, `Username`, `Password`) VALUES
-('00001111', '1', 'student', 'student');
+('00000001', '1', 'donor', '5555'),
+('00000002', '2', 'student', '5555'),
+('00000003', '3', 'admin', '5555');
 
 --
 -- Indexes for dumped tables
@@ -138,13 +155,6 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `donorlist`
---
-ALTER TABLE `donorlist`
-  ADD CONSTRAINT `Donor` FOREIGN KEY (`Donor_ID`) REFERENCES `user` (`ID`),
-  ADD CONSTRAINT `Request` FOREIGN KEY (`Request_ID`) REFERENCES `request` (`request_ID`);
 
 --
 -- Constraints for table `request`
