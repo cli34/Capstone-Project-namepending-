@@ -14,8 +14,6 @@ import "./assets/css/App.css"
 import { AuthProvider, useAuthContext } from "./context"
 
 function App() {
-  const auth = useAuthContext()
-  console.log(auth)
   return (
     <AuthProvider>
       <Router>
@@ -29,11 +27,7 @@ function App() {
           <Route exact path={ROUTES.LOGIN}>
             <Login />
           </Route>
-          <ProtectedRoute
-            path={ROUTES.HOME}
-            component={Home}
-            auth={auth?.user}
-          />
+          <ProtectedRoute path={ROUTES.HOME} component={Home} />
         </Switch>
       </Router>
     </AuthProvider>
