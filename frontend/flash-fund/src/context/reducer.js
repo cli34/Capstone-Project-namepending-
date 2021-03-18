@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from "react"
 
 export const initialState = {
-  user: "",
+  user: {},
   token: "",
   userType: "",
 }
@@ -15,8 +15,8 @@ export const AuthReducer = (initialState, action) => {
           email: action.payload.email,
           password: action.payload.password,
         },
-        token: action.payload.token,
-        userType: action.payload.userType,
+        token: "token", //action.payload.token,
+        userType: "user", //action.payload.userType,
       }
     default:
       throw new Error("cannot handle action")

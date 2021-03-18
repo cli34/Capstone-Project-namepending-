@@ -6,6 +6,7 @@ import Login from "./views/components/login"
 import Register from "./views/components/register"
 import Home from "./views/components/home"
 import Landing from "./views/components/Landing"
+import Four0Four from "./views/components/Four0Four"
 
 import ProtectedRoute from "./views/components/Protected"
 
@@ -14,8 +15,6 @@ import "./assets/css/App.css"
 import { AuthProvider, useAuthContext } from "./context"
 
 function App() {
-  const auth = useAuthContext()
-  console.log(auth)
   return (
     <AuthProvider>
       <Router>
@@ -29,11 +28,10 @@ function App() {
           <Route exact path={ROUTES.LOGIN}>
             <Login />
           </Route>
-          <ProtectedRoute
-            path={ROUTES.HOME}
-            component={Home}
-            auth={auth?.user}
-          />
+          <ProtectedRoute path={ROUTES.HOME} component={Home} />
+          <Route path="*">
+            <Four0Four />
+          </Route>
         </Switch>
       </Router>
     </AuthProvider>
