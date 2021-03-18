@@ -6,20 +6,20 @@ import LandingNavbar from "./LandingNavbar"
 
 const cards = [
   {
-    title: "title1",
-    text: "text1",
+    title: "Campaign 1",
+    text: "Campaign description 1",
     footer: "footer1",
     image: "/photos/apartment.jpg",
   },
   {
-    title: "title2",
-    text: "text2",
+    title: "Campaign 2",
+    text: "Campaign description 2",
     footer: "footer2",
     image: "/photos/entrance.jpg",
   },
   {
-    title: "title3",
-    text: "text3",
+    title: "Campaign 3",
+    text: "Campaign description 3",
     footer: "footer3",
     image: "/photos/front-display.jpg",
   },

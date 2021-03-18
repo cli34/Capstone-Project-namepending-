@@ -11,6 +11,16 @@ import { Redirect, useHistory } from "react-router-dom"
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Required"),
+  firstname: yup
+    .string()
+    .min(2, "First name min length")
+    .max(24, "Password must be between 6 and 24 characters long")
+    .required("Required"),
+  lastname: yup
+    .string()
+    .min(2, "Last name min length")
+    .max(24, "Password must be between 6 and 24 characters long")
+    .required("Required"),
   password: yup
     .string()
     .min(6, "Password must be at least 6 characters")
@@ -47,6 +57,8 @@ const Register = () => {
           validationSchema={schema}
           onSubmit={handleLogin}
           initialValues={{
+            firstname: "",
+            lastname: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -61,6 +73,31 @@ const Register = () => {
             isSubmitting,
           }) => (
             <Form noValidate onSubmit={handleSubmit}>
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridFirst">
+                  <Form.Label>First name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="First name"
+                    value={values.firstname}
+                    name="firstname"
+                    onChange={handleChange}
+                    isInvalid={!!errors.firstname}
+                  />
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridLast">
+                  <Form.Label>Last name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Last name"
+                    value={values.lastname}
+                    name="lastname"
+                    onChange={handleChange}
+                    isInvalid={!!errors.lastname}
+                  />
+                </Form.Group>
+              </Form.Row>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control

@@ -103,7 +103,6 @@ const Login = () => {
             </Form>
           )}
         </Formik>
-        <pre>{JSON.stringify(userInfo, null, 2)}</pre>
       </div>
     </>
   )
