@@ -1,14 +1,39 @@
-import React, { useContext } from "react"
+import React from "react"
 import UserNavbar from "./UserNavbar"
-import { loginUser, useAuthContext } from "../../context"
+import { useAuthContext } from "../../context"
+import { Container, Button } from "react-bootstrap"
+import CampaignList from "./CampaignList"
+import { Link } from "react-router-dom"
+import cards from "../../fakeData"
 
 const Home = (...props) => {
+  console.log(props)
   const authContext = useAuthContext()
+  let button = null
+
+  if (authContext.auth.userType === "student") {
+    button = (
+      <Link to="/new-campaign">
+        <Button className="mb-3">Create New Campaign</Button>
+      </Link>
+    )
+  } else if (authContext.auth.userType === "admin") {
+    button = (
+      <Link to="/pending">
+        <Button className="mb-3">Pending Requests</Button>
+      </Link>
+    )
+  }
 
   return (
     <div>
       <UserNavbar />
-      <pre>{JSON.stringify(authContext.auth, null, 2)}</pre>
+      <Container className="my-4">
+        <pre>{JSON.stringify(authContext.auth, null, 2)}</pre>
+        {button}
+        <h1 className="text-center">Campaigns from my school</h1>
+      </Container>
+      <CampaignList cards={cards} />
     </div>
   )
 }

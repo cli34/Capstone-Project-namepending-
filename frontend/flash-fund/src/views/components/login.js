@@ -16,11 +16,25 @@ const schema = yup.object().shape({
     .required("Required"),
 })
 
-const Login = () => {
+const Login = (props) => {
   const history = useHistory()
   const authContext = useAuthContext()
   const userInfo = authContext.auth
   console.log(userInfo)
+
+  /* Handle login example
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        let payload = {name, email}
+        try {
+            let response = await loginUser(dispatch, payload) //loginUser action makes the request and handles all the neccessary state changes
+            if (!response.user) return
+            props.history.push('/dashboard') //navigate to dashboard on success
+        } catch (error) {
+            console.log(error)
+        }
+    }
+  */
 
   const handleLogin = (creds, { setSubmitting }) => {
     const submit = async () => {

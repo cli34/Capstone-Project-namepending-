@@ -1,30 +1,11 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
 import * as ROUTES from "../../routes/routes"
-import { Card, CardDeck, Container, Jumbotron } from "react-bootstrap"
+import { Card, CardDeck, Col, Container, Jumbotron, Row } from "react-bootstrap"
 import LandingNavbar from "./LandingNavbar"
+import CampaignList from "./CampaignList"
 
-const cards = [
-  {
-    title: "Campaign 1",
-    text: "Campaign description 1",
-    footer: "footer1",
-    image: "/photos/apartment.jpg",
-  },
-  {
-    title: "Campaign 2",
-    text: "Campaign description 2",
-    footer: "footer2",
-    image: "/photos/entrance.jpg",
-  },
-  {
-    title: "Campaign 3",
-    text: "Campaign description 3",
-    footer: "footer3",
-    image: "/photos/front-display.jpg",
-  },
-]
-
+import cards from "../../fakeData"
 const Landing = () => {
   const history = useHistory()
   return (
@@ -34,23 +15,9 @@ const Landing = () => {
         <Jumbotron className="text-center">
           <h1>Welcome to Flash Fund</h1>
         </Jumbotron>
+        <h1 className="text-center">Top Campaigns</h1>
       </Container>
-      <Container>
-        <CardDeck>
-          {cards.map((card, index) => (
-            <Card key={index}>
-              <Card.Img variant="top" src={card.image} />
-              <Card.Body className="text-center">
-                <Card.Title>{card.title}</Card.Title>
-                <Card.Text>{card.text}</Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <small className="text-muted">{card.footer}</small>
-              </Card.Footer>
-            </Card>
-          ))}
-        </CardDeck>
-      </Container>
+      <CampaignList cards={cards} />
     </div>
   )
 }

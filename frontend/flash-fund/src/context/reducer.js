@@ -3,7 +3,7 @@ import React, { useState, useReducer } from "react"
 export const initialState = {
   user: {},
   token: "",
-  userType: "",
+  userType: "admin",
 }
 
 export const AuthReducer = (initialState, action) => {
@@ -16,7 +16,7 @@ export const AuthReducer = (initialState, action) => {
           password: action.payload.password,
         },
         token: "token", //action.payload.token,
-        userType: "user", //action.payload.userType,
+        userType: "student", //action.payload.userType,
       }
     default:
       throw new Error("cannot handle action")
