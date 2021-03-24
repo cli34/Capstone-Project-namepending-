@@ -1,13 +1,11 @@
 import React from "react"
-import { Link } from "react-router-dom"
-import { Form, Col, Button, InputGroup, Card, Spinner } from "react-bootstrap"
-import { Container } from "react-bootstrap"
+import { Form, Col, Button, Spinner } from "react-bootstrap"
 import "../../assets/css/login.css"
 import LandingNavbar from "./LandingNavbar"
 import * as yup from "yup"
-import { Field, Formik } from "formik"
+import { Formik } from "formik"
 import { loginUser, useAuthContext } from "../../context"
-import { Redirect, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Required"),

@@ -20,6 +20,12 @@ const CampaignList = (props) => {
                   <Card.Title className="text-center">{card.title}</Card.Title>
                   <Card.Text>{card.text}</Card.Text>
                 </Card.Body>
+                {props.pending && (
+                  <Card.Body className="text-center">
+                    <Card.Link href="#">Approve</Card.Link>
+                    <Card.Link href="#">Deny</Card.Link>
+                  </Card.Body>
+                )}
                 <Card.Footer>
                   <small className="text-muted">{card.footer}</small>
                 </Card.Footer>
