@@ -3,12 +3,14 @@ import React, { useState, useReducer } from "react"
 export const initialState = {
   user: {},
   token: "",
-  userType: "",
+  userType: "student",
 }
 
 export const AuthReducer = (initialState, action) => {
   switch (action.type) {
     case "login-success":
+      let userType = "student"
+      if (action.payload.email === "admin@a.com") userType = "admin"
       return {
         ...initialState,
         user: {
@@ -16,7 +18,7 @@ export const AuthReducer = (initialState, action) => {
           password: action.payload.password,
         },
         token: "token", //action.payload.token,
-        userType: "user", //action.payload.userType,
+        userType: userType, //action.payload.userType,
       }
     default:
       throw new Error("cannot handle action")

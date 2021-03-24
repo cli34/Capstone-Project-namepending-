@@ -7,8 +7,13 @@ import Register from "./views/components/register"
 import Home from "./views/components/home"
 import Landing from "./views/components/Landing"
 import Four0Four from "./views/components/Four0Four"
+import NewCampaign from "./views/components/NewCampaign"
+import CampaignShow from "./views/components/CampaignShow"
+import Donate from "./views/components/Donate"
+import Pending from "./views/components/Pending"
 
 import ProtectedRoute from "./views/components/Protected"
+import AdminRoute from "./views/components/AdminRoute"
 
 import "./assets/css/App.css"
 
@@ -28,7 +33,11 @@ function App() {
           <Route exact path={ROUTES.LOGIN}>
             <Login />
           </Route>
+          <Route exact path="/campaign/:id" component={CampaignShow}></Route>
+          <Route exact path="/campaign/:id/donate" component={Donate}></Route>
           <ProtectedRoute path={ROUTES.HOME} component={Home} />
+          <ProtectedRoute path={ROUTES.NEW_CAMPAIGN} component={NewCampaign} />
+          <ProtectedRoute path={ROUTES.PENDING} component={Pending} />
           <Route path="*">
             <Four0Four />
           </Route>
