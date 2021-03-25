@@ -1,5 +1,5 @@
 # -FlashFund-
 
 Current Tasklist, 
-1. Finalize the front-end
-2. Set up IDE, and brush up on syntax
+1. Website pathing still needs debugging
+2. Payment API integration
